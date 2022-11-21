@@ -25,14 +25,14 @@ public class Company {
     @Column(length = 100000,name = "located_country")
     private String locatedCountry;
 
-//    @OneToMany(cascade = {MERGE,DETACH,PERSIST,REFRESH},fetch =FetchType.LAZY,mappedBy = "company")
-//    private List<Course> courseList;
-//
-//    public void addCourse(Course course){
-//        if (courseList == null){
-//            courseList=new ArrayList<>();
-//        }
-//        courseList.add(course);
-//    }
+    @OneToMany(cascade = {MERGE,DETACH,PERSIST,REFRESH},fetch =FetchType.LAZY,mappedBy = "company")
+    private List<Course> courseList;
+
+    public void addCourse(Course course){
+        if (courseList == null){
+            courseList=new ArrayList<>();
+        }
+        courseList.add(course);
+    }
 
 }

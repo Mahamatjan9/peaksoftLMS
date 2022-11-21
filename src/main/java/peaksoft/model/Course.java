@@ -10,28 +10,28 @@ import java.util.List;
 
 import static javax.persistence.CascadeType.*;
 
-//@Entity
-//@Table(name = "courses")
-//@Getter
-//@Setter
-//@NoArgsConstructor
+@Entity
+@Table(name = "courses")
+@Getter
+@Setter
+@NoArgsConstructor
 
 public class Course {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_gen")
-//    @SequenceGenerator(name = "course_gen", sequenceName = "course_gen", allocationSize = 1)
-//    private Long id;
-//
-//    @Column(length = 100000, name = "course_name")
-//    private String courseName;
-//    private int duration;
-//
-//    @Column(length = 100000)
-//    private String description;
-//
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    private Company company;
-//
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "course_gen")
+    @SequenceGenerator(name = "course_gen", sequenceName = "course_gen", allocationSize = 1)
+    private Long id;
+
+    @Column(length = 100000, name = "course_name")
+    private String courseName;
+    private int duration;
+
+    @Column(length = 100000)
+    private String description;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Company company;
+
 //    @ManyToMany(cascade = {MERGE, DETACH, PERSIST, REFRESH}, fetch = FetchType.LAZY, mappedBy = "courses")
 //    private List<Group> groupList;
 //
@@ -61,6 +61,6 @@ public class Course {
 //        }
 //        lessonList.add(lesson);
 //    }
-//
+
 
 }

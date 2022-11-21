@@ -31,7 +31,7 @@ public class Group {
 //
 //    @Column(length = 100000)
 //    private String image;
-//
+
 //    @ManyToMany(cascade = {MERGE,DETACH,PERSIST,REFRESH},fetch = FetchType.LAZY)
 //    private List<Course> courseList;
 //    public void addCourse(Course course){

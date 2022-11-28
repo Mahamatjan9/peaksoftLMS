@@ -2,17 +2,20 @@ package peaksoft.service;
 
 import peaksoft.model.Group;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface GroupService {
+    List<Group> getAllListGroups();
 
-//    List<Group> getAlGroups();
-//
-//    void addGroup(Group group);
-//
-//    Group getGroupById(Long id);
-//
-//    void updateGroup(Group group);
-//
-//    void deleteGroup(Group group);
+    List<Group> getAlGroups(Long courseId);
+
+    void addGroup(Group group, Long courseId);
+
+    Group getGroupById(Long id);
+
+    void updateGroup(Group group,Long id);
+
+    void deleteGroup(Long id);
+    void assignGroup(Long courseId, Long groupId) throws IOException;
 }

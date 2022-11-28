@@ -25,7 +25,16 @@ public class Company {
     @Column(length = 100000,name = "located_country")
     private String locatedCountry;
 
-    @OneToMany(cascade = {MERGE,DETACH,PERSIST,REFRESH},fetch =FetchType.LAZY,mappedBy = "company")
+    private int numberOfStudents;
+
+    public void koshuuStudent(){
+        numberOfStudents++;
+    }
+    public void kemuuStudent(){
+        numberOfStudents--;
+    }
+
+    @OneToMany(cascade = {ALL},fetch =FetchType.LAZY,mappedBy = "company")
     private List<Course> courseList;
 
     public void addCourse(Course course){

@@ -16,39 +16,40 @@ import java.util.List;
 
 public class LessonRepositoryImpl implements LessonRepository {
 
-//    @PersistenceContext
-//    private EntityManager entityManager;
-//
-//    @Override
-//    public List<Lesson> getAllLessons() {
-//        return entityManager.createQuery("from Lesson", Lesson.class).getResultList();
-//    }
-//
-//    @Override
-//    public void addLesson(Long id, Lesson lesson) {
-//        Course course = entityManager.find(Course.class,id);
-//        course.addLesson(lesson);
-//        lesson.setCourse(course);
-//        entityManager.merge(lesson);
-//
-//
-//    }
-//
-//    @Override
-//    public Lesson getLessonById(Long id) {
-//        return entityManager.find(Lesson.class,id);
-//    }
-//
-//    @Override
-//    public void updateLesson(Lesson lesson, Long id) {
-//        Lesson lesson1 = entityManager.find(Lesson.class,id);
-//        lesson1.setLessonName(lesson.getLessonName());
-//        entityManager.merge(lesson1);
-//    }
-//
-//    @Override
-//    public void deleteLesson(Lesson lesson) {
-//        entityManager.remove(lesson);
-//
-//    }
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Override
+    public List<Lesson> getAllLessons(Long courseId) {
+        return  entityManager.createQuery("select c from Lesson c where c.course.id = :id",Lesson.class).
+                setParameter("id",courseId).getResultList();
+    }
+
+    @Override
+    public void addLesson(Long id, Lesson lesson) {
+        Course course = entityManager.find(Course.class,id);
+        course.addLesson(lesson);
+        lesson.setCourse(course);
+        entityManager.merge(lesson);
+
+
+    }
+
+    @Override
+    public Lesson getLessonById(Long id) {
+        return entityManager.find(Lesson.class,id);
+    }
+
+    @Override
+    public void updateLesson(Lesson lesson, Long id) {
+        Lesson lesson1 = entityManager.find(Lesson.class,id);
+        lesson1.setLessonName(lesson.getLessonName());
+        entityManager.merge(lesson1);
+    }
+
+    @Override
+    public void deleteLesson(Long id) {
+        entityManager.remove(entityManager.find(Lesson.class,id));
+
+    }
 }

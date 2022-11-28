@@ -6,50 +6,56 @@ import peaksoft.model.Student;
 import peaksoft.repository.StudentRepository;
 import peaksoft.service.StudentService;
 
+import java.io.IOException;
 import java.util.List;
-//@Service
+@Service
 
 public class StudentServiceImpl implements StudentService {
 
-//    private final StudentRepository studentRepository;
-//
-//    @Autowired
-//    public StudentServiceImpl(StudentRepository studentRepository) {
-//        this.studentRepository = studentRepository;
-//    }
-//
-//    @Override
-//    public List<Student> getAlStudents(Long groupId) {
-//        return studentRepository.getAlStudents(groupId);
-//    }
-//
-//    @Override
-//    public void addStudent(Long id, Student student) {
-//        studentRepository.addStudent(id, student);
-//
-//    }
-//
-//    @Override
-//    public Student getStudentById(Long id) {
-//        return studentRepository.getStudentById(id);
-//    }
-//
-//    @Override
-//    public void updateStudent(Student student, Long id) {
-//        studentRepository.updateStudent(student, id);
-//
-//    }
-//
-//    @Override
-//    public void deleteStudent(Student student) {
-//        studentRepository.deleteStudent(student);
-//
-//
-//    }
-//
-//    @Override
-//    public void assignStudent(Long groupId, Long studentId) {
-//        studentRepository.assignStudent(groupId, studentId);
-//
-//    }
+    private final StudentRepository studentRepository;
+
+    @Autowired
+    public StudentServiceImpl(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
+    @Override
+    public List<Student> getStudentList() {
+        return studentRepository.getStudentList();
+    }
+
+    @Override
+    public List<Student> getAlStudents(Long groupId) {
+        return studentRepository.getAlStudents(groupId);
+    }
+
+    @Override
+    public void addStudent(Long id, Student student) {
+        studentRepository.addStudent(id, student);
+
+    }
+
+    @Override
+    public Student getStudentById(Long id) {
+        return studentRepository.getStudentById(id);
+    }
+
+    @Override
+    public void updateStudent(Student student, Long id) {
+        studentRepository.updateStudent(student, id);
+
+    }
+
+    @Override
+    public void deleteStudent(Long id) {
+        studentRepository.deleteStudent(id);
+
+
+    }
+
+    @Override
+    public void assignStudent(Long groupId, Long studentId) throws IOException {
+        studentRepository.assignStudent(groupId, studentId);
+
+    }
 }

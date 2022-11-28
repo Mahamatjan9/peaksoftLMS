@@ -6,13 +6,13 @@ import peaksoft.model.Course;
 import java.util.List;
 
 public interface CourseRepository {
-    List<Course> getAllCourses();
+    List<Course> getAllCourses(Long id);
 
-    void addCourse(Course course);
+    void addCourse(Long id, Course course);
 
-    Company getCourseById(Long id);
+    Course getCourseById(Long id);
 
-    void updateCourse(Course course);
+    void updateCourse(Course course, Long id);
 
-    void deleteCourse(Course course);
+    void deleteCourse(Long id);
 }

@@ -52,7 +52,7 @@ public class TaskController {
         Task task = taskService.getTaskById(id);
         model.addAttribute("task", task);
         model.addAttribute("lessonId", task.getLesson().getId());
-        return "updateTasks";
+        return "updateTask";
     }
 
     @PostMapping("{lessonId}/{id}/saveUpdateTask")
@@ -69,5 +69,7 @@ public class TaskController {
 
         return "redirect:/tasks/" + lessonId;
     }
+
+
 
 }

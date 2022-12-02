@@ -19,7 +19,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public List<Company> getAllCompanies() {
-        return entityManager.createQuery("from Company",Company.class).getResultList();
+        return entityManager.createQuery(" select c from  Company c",Company.class).getResultList();
     }
 
     @Override
@@ -41,7 +41,6 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public void deleteCompany(Company company) {
-        entityManager.remove(entityManager.contains(company) ? company: entityManager.merge(company));
-
+        entityManager.remove(entityManager.contains(company) ? company : entityManager.merge(company));
     }
 }

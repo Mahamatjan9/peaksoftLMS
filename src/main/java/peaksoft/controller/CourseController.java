@@ -87,7 +87,6 @@ public class CourseController {
         @PostMapping("{courseId}/assignInstructor")
         private String assignInstructor(@PathVariable("courseId") Long courseId,
                 @ModelAttribute("instructor") Instructor instructor) throws IOException{
-//            System.out.println(instructor);
             Long id = instructor.getId();
            instructorService.assignInstructor(courseId, id);
             return "redirect:/instructors/"+courseId;

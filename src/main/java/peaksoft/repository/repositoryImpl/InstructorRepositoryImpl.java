@@ -21,7 +21,7 @@ public class InstructorRepositoryImpl implements InstructorRepository {
 
     @Override
     public List<Instructor> getInstructorList() {
-        return entityManager.createQuery("from Instructor", Instructor.class).getResultList();
+        return entityManager.createQuery(" select b from Instructor b", Instructor.class).getResultList();
     }
 
     @Override
@@ -33,7 +33,7 @@ public class InstructorRepositoryImpl implements InstructorRepository {
     @Override
     public void addInstructor(Long id, Instructor instructor) {
        Course course = entityManager.find(Course.class,id);
-       course.addInstructor(instructor);
+       course.addInstructors(instructor);
        instructor.setCourse(course);
        entityManager.merge(course);
 
@@ -68,18 +68,18 @@ public class InstructorRepositoryImpl implements InstructorRepository {
         Instructor instructor = entityManager.find(Instructor.class,instructorId);
         Course course = entityManager.find(Course.class,courseId);
 
-        if (course.getInstructorList()!=null){
-            for (Instructor i:course.getInstructorList()) {
+        if (course.getInstructors()!=null){
+            for (Instructor i:course.getInstructors()) {
                 if (i.getId()==instructorId){
-                    throw new IOException("myndai instructor bar");
+                    throw new IOException("error instructor!!!!");
                 }
 
             }
         }
-        instructor.getCourse().getInstructorList().remove(instructor);
+        instructor.getCourse().getInstructors().remove(instructor);
 
         instructor.setCourse(course);
-        course.addInstructor(instructor);
+        course.addInstructors(instructor);
         entityManager.merge(instructor);
         entityManager.merge(course);
 

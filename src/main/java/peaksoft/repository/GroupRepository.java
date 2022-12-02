@@ -1,7 +1,5 @@
 package peaksoft.repository;
 
-import peaksoft.model.Company;
-import peaksoft.model.Course;
 import peaksoft.model.Group;
 
 import java.io.IOException;

@@ -32,6 +32,6 @@ public class Student {
     @Column(name = "study_format")
     private StudyFormat studyFormat;
 
-    @ManyToOne(cascade = {MERGE,DETACH,PERSIST,REFRESH},fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {MERGE,DETACH,PERSIST,REFRESH,REMOVE},fetch = FetchType.EAGER)
     private Group group;
 }

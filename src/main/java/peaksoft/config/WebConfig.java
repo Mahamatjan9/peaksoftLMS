@@ -31,11 +31,11 @@ public class WebConfig {
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {
-        SpringResourceTemplateResolver srtr = new SpringResourceTemplateResolver();
-        srtr.setApplicationContext(applicationContext);
-        srtr.setPrefix("/WEB-INF/views");
-        srtr.setSuffix(".html");
-        return srtr;
+        SpringResourceTemplateResolver abs = new SpringResourceTemplateResolver();
+        abs.setApplicationContext(applicationContext);
+        abs.setPrefix("/WEB-INF/views");
+        abs.setSuffix(".html");
+        return abs;
     }
 
     @Bean

@@ -74,7 +74,6 @@ public class GroupController {
     @PostMapping("{groupId}/assignStudent")
     private String assignStudent(@PathVariable("groupId") Long groupId,
                                     @ModelAttribute("student") Student student) throws IOException {
-//            System.out.println(instructor);
         Long id = student.getId();
         studentService.assignStudent(groupId, id);
         return "redirect:/students/"+groupId;

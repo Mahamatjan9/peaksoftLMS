@@ -34,7 +34,7 @@ public class Group {
     @Column(length = 100000)
     private String image;
 
-    @ManyToMany(cascade = {MERGE,DETACH,PERSIST,REFRESH},fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {MERGE,DETACH,PERSIST,REFRESH,REMOVE})
     private List<Course> courseList;
     public void addCourse(Course course){
         if (courseList == null){
@@ -50,7 +50,7 @@ public class Group {
         }
         studentList.add(student);
         for (Course c:courseList) {
-            c.getCompany().koshuuStudent();
+            c.getCompany().Students();
 
 
         }

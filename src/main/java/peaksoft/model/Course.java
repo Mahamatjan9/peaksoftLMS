@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.*;
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Table(name = "courses")
@@ -29,10 +30,10 @@ public class Course {
     @Column(length = 100000)
     private String description;
 
-    @ManyToOne(cascade = {DETACH,MERGE,PERSIST,REFRESH},fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {MERGE, DETACH, REFRESH, PERSIST,REMOVE}, fetch = FetchType.EAGER)
     private Company company;
 
-    @ManyToMany(cascade = {MERGE, DETACH, PERSIST, REFRESH}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {MERGE, DETACH,  REFRESH,REMOVE}, fetch = FetchType.LAZY)
     private List<Group> groupList;
 
     public void addGroup(Group group) {
@@ -42,24 +43,24 @@ public class Course {
         groupList.add(group);
     }
 
-    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY, mappedBy = "course")
-    private List<Instructor> instructorList;
+    @OneToMany(cascade = {ALL},fetch = LAZY, mappedBy = "course")
+    private List<Instructor> instructors;
 
-    public void addInstructor(Instructor instructor) {
-        if (instructorList == null) {
-            instructorList = new ArrayList<>();
+    public void addInstructors(Instructor instructor){
+        if (instructors==null){
+            instructors=new ArrayList<>();
         }
-        instructorList.add(instructor);
+        instructors.add(instructor);
     }
 
-    @OneToMany(cascade = {ALL}, fetch = FetchType.LAZY, mappedBy = "course")
-    private List<Lesson> lessonList;
+    @OneToMany(cascade = {ALL}, fetch = LAZY, mappedBy = "course")
+    private List<Lesson> lessons;
 
-    public void addLesson(Lesson lesson) {
-        if (lessonList == null) {
-            lessonList = new ArrayList<>();
+    public void addLesson(Lesson lesson){
+        if (lessons==null){
+            lessons=new ArrayList<>();
         }
-        lessonList.add(lesson);
+        lessons.add(lesson);
     }
 
 

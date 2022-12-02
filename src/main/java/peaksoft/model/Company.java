@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.CascadeType.*;
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Table(name = "companies")
@@ -27,21 +28,20 @@ public class Company {
 
     private int numberOfStudents;
 
-    public void koshuuStudent(){
+    public void Students(){
         numberOfStudents++;
     }
-    public void kemuuStudent(){
+    public void Student(){
         numberOfStudents--;
     }
 
-    @OneToMany(cascade = {ALL},fetch =FetchType.LAZY,mappedBy = "company")
-    private List<Course> courseList;
-
-    public void addCourse(Course course){
-        if (courseList == null){
-            courseList=new ArrayList<>();
+    @OneToMany(cascade = {ALL}, fetch = LAZY, mappedBy = "company")
+    private List<Course> courses;
+    public void addCourse(Course course1){
+        if (courses==null){
+            courses=new ArrayList<>();
         }
-        courseList.add(course);
+        courses.add(course1);
     }
 
 }

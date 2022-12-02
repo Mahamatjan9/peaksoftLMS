@@ -62,7 +62,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     public void deleteStudent(Long id) {
         Student student = entityManager.find(Student.class,id);
         for (Course c:student.getGroup().getCourseList()) {
-            c.getCompany().kemuuStudent();
+            c.getCompany().Student();
         }
         entityManager.remove(student);
     }

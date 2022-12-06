@@ -34,7 +34,7 @@ public class Group {
     @Column(length = 100000)
     private String image;
 
-    @ManyToMany(cascade = {MERGE,DETACH,PERSIST,REFRESH,REMOVE})
+    @ManyToMany(cascade = {MERGE,DETACH,PERSIST,REFRESH})
     private List<Course> courseList;
     public void addCourse(Course course){
         if (courseList == null){
@@ -51,8 +51,6 @@ public class Group {
         studentList.add(student);
         for (Course c:courseList) {
             c.getCompany().Students();
-
-
         }
     }
 

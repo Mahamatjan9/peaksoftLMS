@@ -1,7 +1,6 @@
 package peaksoft.repository.repositoryImpl;
 
 import org.springframework.stereotype.Repository;
-import peaksoft.model.Company;
 import peaksoft.model.Course;
 import peaksoft.model.Group;
 import peaksoft.repository.GroupRepository;
@@ -21,7 +20,7 @@ public class GroupRepositoryImpl implements GroupRepository {
 
     @Override
     public List<Group> getAllListGroups() {
-        return entityManager.createQuery("select g from Group g").getResultList();
+        return entityManager.createQuery("select f from Group f").getResultList();
     }
 
     @Override
@@ -38,8 +37,6 @@ public class GroupRepositoryImpl implements GroupRepository {
         course.addGroup(group);
         group.addCourse(course);
         entityManager.merge(course);
-        entityManager.merge(group);
-
     }
 
     @Override
@@ -75,7 +72,7 @@ public class GroupRepositoryImpl implements GroupRepository {
         if (course.getGroupList() != null) {
             for (Group g : course.getGroupList()) {
                 if (g.getId() == groupId) {
-                    throw new IOException("myndai group bar!!!");
+                    throw new IOException("error assign Group!!!");
                 }
             }
         }

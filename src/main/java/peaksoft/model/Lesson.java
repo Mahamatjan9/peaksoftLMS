@@ -24,7 +24,7 @@ public class Lesson {
     @Column(length = 100000,name = "lesson_name")
     private String lessonName;
 
-    @ManyToOne(cascade = {MERGE,DETACH,PERSIST,REFRESH,REMOVE},fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {MERGE,DETACH,PERSIST,REFRESH},fetch = FetchType.EAGER)
     private Course course;
 
     @OneToMany(cascade = {ALL},fetch = FetchType.LAZY,mappedBy = "lesson")

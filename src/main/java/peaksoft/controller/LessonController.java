@@ -57,8 +57,7 @@ public class LessonController {
     }
     @GetMapping("/{courseId}/{id}/deleteLesson")
     public String deleteLesson(@PathVariable("id") Long id, @PathVariable("courseId") Long courseId) {
-         lessonService.deleteLesson(id);
-
+        lessonService.deleteLesson(id);
         return "redirect:/lessons/" + courseId;
     }
 

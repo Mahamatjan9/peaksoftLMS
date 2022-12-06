@@ -1,5 +1,7 @@
 package peaksoft.controller;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,7 +60,7 @@ public class GroupController {
         return "/group/updateGroup";
     }
 
-   @PostMapping("/{courseId}/{id}/saveUpdateGroup")
+    @PostMapping("/{courseId}/{id}/saveUpdateGroup")
     public String saveUpdateGroup(@PathVariable("courseId") Long courseId,
                                   @PathVariable("id") Long id,
                                   @ModelAttribute("group") Group group) {
@@ -73,7 +75,7 @@ public class GroupController {
     }
     @PostMapping("{groupId}/assignStudent")
     private String assignStudent(@PathVariable("groupId") Long groupId,
-                                    @ModelAttribute("student") Student student) throws IOException {
+                                 @ModelAttribute("student") Student student) throws IOException {
         Long id = student.getId();
         studentService.assignStudent(groupId, id);
         return "redirect:/students/"+groupId;

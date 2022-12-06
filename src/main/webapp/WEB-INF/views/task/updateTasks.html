@@ -10,16 +10,16 @@
 <body>
 <form
         action="#"
-        th:action="@{/{lessonId}/{id}/saveUpdateTask(lessonId=${lessonId},id=${task.id})}"
-        th:object="${task}"
-        method="POST">
+        th:action="@{/{lessonId}/{id}/saveUpdateTask(lessonId=${lessonId}, id=${tasks.id})}"
+        th:object="${tasks}"
+        method="post">
 
     <input type="hidden" name="id" th:field="*{id}">
     <input type="text" name="taskName" th:field="*{taskName}" placeholder="Task name">
     <br><br>
     <input type="text" name="taskName" th:field="*{taskText}" placeholder="Task text">
     <br><br>
-    <input type="data" name="deadline" th:field="*{deadline}" placeholder="deadline">
+    <input type="date" name="deadline" th:field="*{deadline}" placeholder="deadline">
     <br><br>
     <input type="submit" value="Add">
 

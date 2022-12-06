@@ -33,7 +33,7 @@ public class Course {
     @ManyToOne(cascade = {MERGE, DETACH, REFRESH, PERSIST,REMOVE}, fetch = FetchType.EAGER)
     private Company company;
 
-    @ManyToMany(cascade = {MERGE, DETACH,  REFRESH,REMOVE}, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {MERGE, DETACH,REFRESH,REMOVE}, fetch = FetchType.LAZY,mappedBy = "courseList")
     private List<Group> groupList;
 
     public void addGroup(Group group) {

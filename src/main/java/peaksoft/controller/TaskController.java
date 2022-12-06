@@ -50,9 +50,9 @@ public class TaskController {
     @GetMapping("/updateTask/{id}")
     public String updateTask(@PathVariable("id") Long id, Model model) {
         Task task = taskService.getTaskById(id);
-        model.addAttribute("task", task);
+        model.addAttribute("tasks", task);
         model.addAttribute("lessonId", task.getLesson().getId());
-        return "updateTask";
+        return "/task/updateTasks";
     }
 
     @PostMapping("{lessonId}/{id}/saveUpdateTask")

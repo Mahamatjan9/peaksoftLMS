@@ -26,7 +26,7 @@ public class StudentRepositoryImpl implements StudentRepository {
 
     @Override
     public List<Student> getStudentList() {
-        return entityManager.createQuery("from Student" , Student.class).getResultList();
+        return entityManager.createQuery("select v from Student v" , Student.class).getResultList();
     }
 
     @Override
@@ -74,7 +74,7 @@ public class StudentRepositoryImpl implements StudentRepository {
         if (group.getStudentList()!=null){
             for (Student i:group.getStudentList()) {
                 if (i.getId()==studentId){
-                    throw new IOException("myndai student bar");
+                    throw new IOException("Student error!!!!");
                 }
 
             }

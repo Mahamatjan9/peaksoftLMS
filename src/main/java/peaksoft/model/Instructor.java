@@ -35,7 +35,7 @@ public class Instructor {
     @Column(length = 100000)
     private String specialization;
 
-    @ManyToOne(cascade = {MERGE,DETACH,PERSIST,REFRESH,REMOVE}, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {MERGE,DETACH,PERSIST,REFRESH}, fetch = FetchType.EAGER)
     private Course course;
 }
 

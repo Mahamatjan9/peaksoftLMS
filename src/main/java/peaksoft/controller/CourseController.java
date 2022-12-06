@@ -64,18 +64,20 @@ public class CourseController {
     }
 
     @GetMapping("{companyId}/{id}/saveUpdateCourse")
-    public String saveUpdateCourse(@PathVariable("companyId") Long companyId,
-                                   @PathVariable("id") Long id,
+    public String saveUpdateCourse(@PathVariable("id") Long id,
+                                   @PathVariable("companyId") Long companyId,
                                    @ModelAttribute("course") Course course) {
         courseService.updateCourse(course, id);
         return "redirect:/courses/" + companyId;
     }
 
     @GetMapping("/{companyId}/{id}/deleteCourse")
-    public String deleteCourse(@PathVariable("id") Long id, @PathVariable("companyId") Long companyId) {
+    public String deleteCourse(@PathVariable("id") Long id,
+                               @PathVariable("companyId") Long companyId) {
         courseService.deleteCourse(id);
         return "redirect:/courses/" + companyId;
     }
+
     @PostMapping("{courseId}/assignGroup")
     private String assignGroup(@PathVariable("courseId") Long courseId,
         @ModelAttribute("group") Group group) throws IOException {
@@ -91,7 +93,5 @@ public class CourseController {
            instructorService.assignInstructor(courseId, id);
             return "redirect:/instructors/"+courseId;
     }
-
-
 
 }
